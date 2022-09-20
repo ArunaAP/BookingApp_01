@@ -14,18 +14,46 @@ import { AuthContext } from "../../context/AuthContex"
 
 const Single = () => {
 
-  //to user fetch function
+  //user fetch
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [openModal, setOpenModal] = useState(false)
   const { data, loading, error, reFetch } = useFetch(`/users/${id}`);
 
   
+  //update function
+  const [file, setFile] = useState("");
+  const [info , setInfo] = useState({});
 
+  const handleChange= e => {
+  
+      setInfo( (prev) => ({...prev, [e.target.id] : e.target.value }));
+   
+  };
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
+  const handleClick = async e =>{
+    e.preventDefault();
+    const data = new FormData()
+    data.append("file" , file )
+    data.append("upload_preset" , "upload")
 
+    try{
+        const newUser = {
+          ...info,
+        };
+      
+        await axios.put(`/users/${id}` , newUser);
+        refreshPage() 
+
+    }catch(err){
+      console.log(err)
+      alert("user Not Update ")
+    }
+ }
 
   //for validation
   const {
@@ -81,18 +109,12 @@ const Single = () => {
 
 
 
-
-
-
-
-
           {/* For update form */}
-          {/* <form onSubmit={handleSubmit(onSubmit)}></form> */}
 
           <div className="container">
                     <div className="card">
 
-         <form onSubmit={handleSubmit(onSubmit)}>
+         <form onSubmit={handleClick}>
         <div>
           <h1>Update Form</h1>
         </div>
@@ -101,7 +123,9 @@ const Single = () => {
         <div>
           <label>Name</label>
           <input
-            
+          
+             id="username"
+            onChangeCapture = {handleChange}
             defaultValue= {data.username}
           
           
@@ -116,7 +140,8 @@ const Single = () => {
         <div>
           <label>Email</label>
           <input
-     
+          id="email"
+          onChangeCapture={handleChange}
            defaultValue= {data.email}
             {...register("email", {
               required: true,
@@ -133,7 +158,8 @@ const Single = () => {
 
           <label>Phone Number</label>
           <input
-        
+          id="phone"
+          onChangeCapture={handleChange}
           defaultValue= {data.phone}
             type="number"
             {...register("number", {
@@ -153,7 +179,8 @@ const Single = () => {
         <div>
           <label>Country</label>
           <input
-
+          id="country"
+          onChangeCapture={handleChange}
             defaultValue= {data.country}
             {...register("country", { required: true })}
           />
@@ -165,7 +192,8 @@ const Single = () => {
         <div>
           <label>City</label>
           <input
-
+          id="city"
+          onChangeCapture={handleChange}
             defaultValue= {data.city}
             {...register("city", { required: true })}
           />
@@ -176,7 +204,7 @@ const Single = () => {
 
       
         <div>
-          <input className="button" onSubmit="" type="submit" />
+          <input className="button" onSubmit={handleClick} type="submit" />
         </div>
       </form>
                     </div>

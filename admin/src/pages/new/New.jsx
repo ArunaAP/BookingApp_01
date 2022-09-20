@@ -14,6 +14,9 @@ const New = ({ inputs, title }) => {
   const handleChange= e => {
       setInfo( (prev) => ({...prev, [e.target.id] : e.target.value }));
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
  const handleClick = async e =>{
     e.preventDefault();
@@ -29,6 +32,7 @@ const New = ({ inputs, title }) => {
         };
 
         await axios.post("/auth/register" , newUser);
+        refreshPage() 
 
     }catch(err){
       console.log(err)
