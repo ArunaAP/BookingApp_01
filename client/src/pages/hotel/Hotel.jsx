@@ -57,11 +57,14 @@ const Hotel = () => {
           <span className="hotelDistance">{data.distance} m from centure</span>
           <span className="hotelPriceHighlight">Book a stay over ${data.cheapestPrice} at this property</span>
           <div className="hotelImages">
+
               {data.photos?.map(photo=>(
                 <div className="hotelImgWrapper">
                   <img src={photo} alt="" className="hotelImg" />
                 </div>
               ))}
+
+              
           </div>
           <div className="hotelDetails">
             <div className="hotelDetailsTexts">

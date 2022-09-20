@@ -7,6 +7,7 @@ import axios from "axios"
 
 
 const New = ({ inputs, title }) => {
+  
   const [file, setFile] = useState("");
   const [info , setInfo] = useState({});
 
@@ -76,7 +77,7 @@ const New = ({ inputs, title }) => {
                 </div>
               ))}
               <button onClick={handleClick}>Send</button>
-              <button>Update</button>
+              
               
             </form>
           </div>
