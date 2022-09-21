@@ -7,12 +7,16 @@ import axios from "axios"
 
 
 const New = ({ inputs, title }) => {
+  
   const [file, setFile] = useState("");
   const [info , setInfo] = useState({});
 
   const handleChange= e => {
       setInfo( (prev) => ({...prev, [e.target.id] : e.target.value }));
   };
+  function refreshPage() {
+    window.location.reload(false);
+  }
 
  const handleClick = async e =>{
     e.preventDefault();
@@ -28,6 +32,7 @@ const New = ({ inputs, title }) => {
         };
 
         await axios.post("/auth/register" , newUser);
+        refreshPage() 
 
     }catch(err){
       console.log(err)
@@ -76,7 +81,7 @@ const New = ({ inputs, title }) => {
                 </div>
               ))}
               <button onClick={handleClick}>Send</button>
-              <button>Update</button>
+              
               
             </form>
           </div>

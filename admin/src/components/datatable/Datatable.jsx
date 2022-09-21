@@ -33,12 +33,12 @@ const Datatable = ({columns}) => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 250,
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/hotels/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
+            <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
+              <div className="viewButton">Update</div>
             </Link>
             <div
               className="deleteButton"
@@ -47,9 +47,9 @@ const Datatable = ({columns}) => {
               Delete
             </div>
 
-            <Link to="/users/new" style={{ textDecoration: "none" }}>
-              <div className="viewButton">Update</div>
-            </Link>
+            
+
+
 
 
           </div>
