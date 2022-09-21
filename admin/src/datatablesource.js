@@ -16,7 +16,7 @@ export const userColumns = [
   {
     field: "email",
     headerName: "Email",
-    width: 230,
+    width: 250,
   },
 
   {
@@ -34,20 +34,9 @@ export const userColumns = [
   {
     field: "phone",
     headerName: "Phone",  
-    width: 100,
+    width: 150,
   },
-  {
-    field: "status",
-    headerName: "Status",
-    width: 160,
-    renderCell: (params) => {
-      return (
-        <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
-        </div>
-      );
-    },
-  },
+
 ];
 
 export const hotelColumns = [

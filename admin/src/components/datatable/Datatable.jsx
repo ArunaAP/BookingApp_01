@@ -33,7 +33,7 @@ const Datatable = ({columns}) => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 250,
       renderCell: (params) => {
         return (
           <div className="cellAction">
@@ -45,6 +45,7 @@ const Datatable = ({columns}) => {
               onClick={() => handleDelete(params.row._id)}>
               Delete
             </div>
+
 
           </div>
         );
