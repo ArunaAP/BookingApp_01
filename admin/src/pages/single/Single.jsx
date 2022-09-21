@@ -1,21 +1,17 @@
 import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import Chart from "../../components/chart/Chart";
-import List from "../../components/table/Table";
-import React, { useEffect, useState ,Component } from "react";
-import { get, useForm } from "react-hook-form";
+import React, {  useState} from "react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContex"
+
 
 
 const Single = () => {
 
   //user fetch
-
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const { data, loading, error, reFetch } = useFetch(`/users/${id}`);
@@ -31,12 +27,14 @@ const Single = () => {
    
   };
 
+  //for refresh the page again
   function refreshPage() {
     window.location.reload(false);
   }
 
+  //update function
   const handleClick = async e =>{
-    e.preventDefault();
+    
     const data = new FormData()
     data.append("file" , file )
     data.append("upload_preset" , "upload")
@@ -55,6 +53,7 @@ const Single = () => {
     }
  }
 
+
   //for validation
   const {
     register,
@@ -62,7 +61,6 @@ const Single = () => {
     handleSubmit,
   } = useForm();
   
-  const onSubmit = (data) => console.log(data);
 
   return (
     <div className="single">
@@ -101,22 +99,15 @@ const Single = () => {
             </div>
           </div>
           <div className="right">
-       
-          </div>
-        </div>
-        <div className="bottom">
 
-
-
-
+                 
           {/* For update form */}
-
           <div className="container">
                     <div className="card">
 
-         <form onSubmit={handleClick}>
+         <form onSubmitCapture={handleSubmit(handleClick)} >
         <div>
-          <h1>Update Form</h1>
+          <h1>User Update Form</h1>
         </div>
 
 
@@ -207,12 +198,12 @@ const Single = () => {
           <input className="button" onSubmit={handleClick} type="submit" />
         </div>
       </form>
-                    </div>
+         </div>
           </div>
-
-        
-      
+       
+          </div>
         </div>
+
       </div>
     </div>
   );

@@ -92,6 +92,9 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      background-color: rgba(128, 128, 128, 0.2);
       
     }
     .card {
@@ -101,6 +104,8 @@
       padding: 40px;
       border-radius: 16px;
       background-color: #fff;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
     }
     h1 {
       text-align: center;
