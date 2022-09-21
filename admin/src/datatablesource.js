@@ -1,4 +1,5 @@
 export const userColumns = [
+
   {
     field: "user",
     headerName: "User",
@@ -39,11 +40,25 @@ export const userColumns = [
 ];
 
 export const hotelColumns = [
-  {field: "_id", headerName: "ID", width: 250},
+
+  {
+    field: "id",
+    headerName: "ID",
+    width: 300,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.photos || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="" />
+          {params.row._id}
+        </div>
+      );
+    },
+  },
+  // {field: "_id", headerName: "ID", width: 250},
   {
     field: "name",
     headerName: "Name",
-    width: 150,
+    width: 170,
   },
   {
     field: "type",
@@ -53,12 +68,12 @@ export const hotelColumns = [
   {
     field: "title",
     headerName: "Title",
-    width: 100,
+    width: 250,
   },
   {
     field: "city",
     headerName: "City",
-    width: 100,
+    width: 130,
   },
   
 ]

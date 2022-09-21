@@ -11,6 +11,7 @@ import useFetch from "../../hooks/useFetch";
 
 const Single = () => {
 
+
   //user fetch
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -62,13 +63,17 @@ const Single = () => {
   } = useForm();
   
 
+
   return (
+
+   
     <div className="single">
       <Sidebar />
       <div className="singleContainer">
         <Navbar />
         <div className="top">
           <div className="left">
+          <h1>Single User</h1>
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">

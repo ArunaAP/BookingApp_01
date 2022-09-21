@@ -80,6 +80,7 @@ const New = ({ inputs, title }) => {
                   />
                 </div>
               ))}
+              
               <button onClick={handleClick}>Send</button>
               
               
