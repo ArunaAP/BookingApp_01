@@ -75,8 +75,9 @@ const New = ({ inputs, title }) => {
                   />
                 </div>
               ))}
+              
               <button onClick={handleClick}>Send</button>
-              <button>Update</button>
+              
               
             </form>
           </div>
