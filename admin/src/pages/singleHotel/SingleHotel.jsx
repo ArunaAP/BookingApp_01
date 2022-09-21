@@ -1,26 +1,23 @@
 import "./singleHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import Chart from "../../components/chart/Chart";
-import List from "../../components/table/Table";
 import React, { useEffect, useState ,Component } from "react";
 import { get, useForm } from "react-hook-form";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContex"
+
 
 
 const SingleHotel = () => {
-//user fetch
+//Fetch single hotel
 
 const location = useLocation();
 const id = location.pathname.split("/")[2];
 const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`);
 
 
-//update function
+//update hotel
 const [file, setFile] = useState("");
 const [info , setInfo] = useState({});
 
@@ -35,7 +32,7 @@ function refreshPage() {
 }
 
 const handleClick = async e =>{
-  e.preventDefault();
+  // e.preventDefault();
   const data = new FormData()
   data.append("file" , file )
   data.append("upload_preset" , "upload")
@@ -70,12 +67,12 @@ return (
       <Navbar />
       <div className="top">
         <div className="left">
-          <div className="editButton">Edit</div>
+         
           <h1 className="title">Hotel Information</h1>
           <div className="item">
 
             {/* to get photo */}
-        <img className="itemImg" src={data.img || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="avatar" />
+        <img className="itemImg" src={data.photos || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="avatar" />
             <div className="details">
               <h1 className="itemTitle">{data.name}</h1>
               <div className="detailItem">
@@ -100,26 +97,18 @@ return (
               </div>
               <div className="detailItem">
                 <span className="itemKey">Price:</span>
-                <span className="itemValue"><b>${data.cheapestPrice}</b></span>
+                <span className="itemValue"><b>LKR {data.cheapestPrice}</b></span>
               </div>
             </div>
           </div>
         </div>
         <div className="right">
-     
-        </div>
-      </div>
-      <div className="bottom">
-
-
-
-
-        {/* For update form */}
+      {/* For update form */}
 
       <div className="container">
                   <div className="card">
 
-       <form onSubmit={handleClick}>
+       <form onSubmitCapture={handleSubmit(handleClick)}>
       <div>
         <h1>Hotel Update Form</h1>
       </div>
@@ -146,7 +135,7 @@ return (
             onChangeCapture = {handleChange}
             defaultValue= {data.type}
           
-            {...register("type", { required: true })}
+            {...register("type", { required: false  })}
           />
         <error>
           {errors.type?.type === "required" && "type is required"}
@@ -229,7 +218,7 @@ return (
             id="cheapestPrice"
             onChangeCapture = {handleChange}
             defaultValue= {data.cheapestPrice}
-          
+            
             {...register("cheapestPrice", { required: true })}
           />
         <error>
@@ -238,72 +227,21 @@ return (
       </div>
 
 
-
-
-
-
-{/* 
-      <div>
-        <label>Type</label>
-        <input
-        id="type"
-        onChangeCapture={handleChange}
-         defaultValue= {data.email}
-          {...register("email", {
-            required: true,
-            pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
-          })}
-        />
-        <error>
-          {errors.email?.type === "required" && "Email is required"}
-          {errors.email?.type === "pattern" &&
-            "Entered email is in wrong format"}
-        </error>
-      </div>
-      <div>
-
-        <label>Phone Number</label>
-        <input
-        id="phone"
-        onChangeCapture={handleChange}
-        defaultValue= {data.phone}
-          type="number"
-          {...register("number", {
-            minLength: 6,
-            maxLength: 12,
-          })}
-        />
-        <error>
-          {errors.number?.type === "minLength" &&
-            "Entered number is less than 6 digits"}
-          {errors.number?.type === "maxLength" &&
-            "Entered number is more than 12 digits"}
-        </error>
-      </div>
-      
-
-      <div>
-        <label>Country</label>
-        <input
-        id="country"
-        onChangeCapture={handleChange}
-          defaultValue= {data.country}
-          {...register("country", { required: true })}
-        />
-        <error>
-          {errors.country?.type === "required" && "Country is required"}
-        </error>
-      </div> */}
-
-      
-
     
       <div>
-        <input className="button" onSubmit={handleClick} type="submit" />
+        <input className="button" type="submit" />
       </div>
     </form>
-                  </div>
+          </div>
         </div>
+        </div>
+      </div>
+      <div className="bottom">
+
+
+
+
+       
 
       
     

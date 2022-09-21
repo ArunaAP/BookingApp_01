@@ -15,10 +15,7 @@
         -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
-         position: absolute;
-         left: 500px;
-         top: 120px;
-        
+        position: relative;
         
         
 
@@ -46,6 +43,8 @@
           }
 
           .details {
+
+            
             .itemTitle {
               margin-bottom: 10px;
               color: #555;
@@ -54,6 +53,7 @@
             .detailItem {
               margin-bottom: 10px;
               font-size: 14px;
+              
 
               .itemKey {
                 font-weight: bold;
@@ -98,8 +98,8 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      flex: 2;
-      margin-top:300px;
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
       
       
     }
