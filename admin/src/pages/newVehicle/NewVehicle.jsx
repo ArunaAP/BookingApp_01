@@ -1,33 +1,34 @@
-import "./newRoom.scss";
+  import "./newVehicle.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { roomInputs } from "../../formSource";
 import { useState } from "react";
+import { vehicleInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
-const NewRoom = ({ inputs, title }) => {
+
+const NewVehicle = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
-  const [hotelId, setHotelId] = useState([undefined]);
-  const [rooms, setRooms] = useState([]);
   
-  const {data, loading, error} = useFetch("/hotels");
 
-
-  const handleChange= (e) => {
+  const handleChange= e => {
     setInfo( (prev) => ({...prev, [e.target.id] : e.target.value }));
 };
 
-function refreshPage() {
-  window.location.reload(false);
-}
 
 
-const handleClick = async (e)=>{
-  e.preventDefault()
-  
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
+ 
+
+ const handleClick = async (e)=>{
+  e.preventDefault();
+
+
   try{
     const list = await Promise.all(
       Object.values(files).map( async(file)=>{
@@ -39,17 +40,16 @@ const handleClick = async (e)=>{
         return url
     }));
 
-    const roomNumbers = {
-      ...info,photos: list,
-    }
-   
-   await axios.post('/rooms', roomNumbers);
-   refreshPage();
 
-   }catch(err){
-  console.log(err);
+    const newVehicle = {
+      ...info,image: list,
+    };
+    await axios.post("/vehicles", newVehicle)
+    refreshPage() 
+  }catch(err){
+    console.log(err)
   }
-};
+ }
 
   return (
     <div className="new">
@@ -57,7 +57,7 @@ const handleClick = async (e)=>{
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Room</h1>
+          <h1>Add New Vehicle</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -72,8 +72,7 @@ const handleClick = async (e)=>{
           </div>
           <div className="right">
             <form>
-
-            <div className="formInput">
+              <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
@@ -86,33 +85,19 @@ const handleClick = async (e)=>{
                 />
               </div>
 
-              {roomInputs.map((input) => (
+              {vehicleInputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  < input id ={input.id}
-                    input type={input.type} 
-                   placeholder={input.placeholder} 
-                  onChange={handleChange} />
+                  <input 
+                    id={input.id} 
+                    onChange={handleChange} 
+                    type={input.type} 
+                    placeholder={input.placeholder} 
+                  />
                 </div>
               ))}
-
-              {/* <div className="formInput">
-                  <label>Rooms</label>
-                  <textarea onChange={e=>setRooms(e.target.value)} placeholder="give comma between room numbers"></textarea>
-                </div> */}
-
-                <div className="formInput">
-                  <label>choose a hotel</label>
-                  <select id="hotelId"  onchange={e=>setHotelId(e.target.value)}>
-                  {loading ? "loading" : data && data.map(hotel=>(
-                    <option key={hotel._id}value={hotel._id}>{hotel.name}</option>
-                    
-                  ))}
-                  </select>
-                </div>
-
-
-                <button onClick={handleClick}>ADD ROOM</button>
+             
+              <button onClick={handleClick}>ADD VEHICLE</button>
             </form>
           </div>
         </div>
@@ -121,4 +106,4 @@ const handleClick = async (e)=>{
   );
 };
 
-export default NewRoom;
+export default NewVehicle;

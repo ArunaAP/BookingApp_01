@@ -1,4 +1,4 @@
-import "./singleHotel.scss";
+import "./singleRoom.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import React, { useEffect, useState ,Component } from "react";
@@ -9,15 +9,15 @@ import useFetch from "../../hooks/useFetch";
 
 
 
-const SingleHotel = () => {
-//Fetch single hotel
+const SingleRoom = () => {
+//Fetch single room
 
 const location = useLocation();
 const id = location.pathname.split("/")[2];
-const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`);
+const { data, loading, error, reFetch } = useFetch(`/rooms/${id}`);
 
 
-//update hotel
+//update room
 const [file, setFile] = useState("");
 const [info , setInfo] = useState({});
 
@@ -38,16 +38,16 @@ const handleClick = async e =>{
   data.append("upload_preset" , "upload")
 
   try{
-      const newHotel = {
+      const newRoom = {
         ...info,
       };
     
-      await axios.put(`/hotels/${id}` , newHotel);
+      await axios.put(`/rooms/${id}` , newRoom);
       refreshPage() 
 
   }catch(err){
     console.log(err)
-    alert("Hotel Not Update ")
+    alert("Room Not Update ")
   }
 }
 
@@ -68,7 +68,7 @@ return (
       <div className="top">
         <div className="left">
          
-          <h1 className="title">Hotel Information</h1>
+          <h1 className="title">Room Information</h1>
           <div className="item">
 
             {/* to get photo */}
@@ -76,28 +76,41 @@ return (
             <div className="details">
               <h1 className="itemTitle">{data.name}</h1>
               <div className="detailItem">
-                <span className="itemKey">Type:</span>
-                <span className="itemValue">{data.type}</span>
-              </div>
-              <div className="detailItem">
-                <span className="itemKey">Title:</span>
-                <span className="itemValue">{data.title}</span>
-              </div>
-              <div className="detailItem">
-                <span className="itemKey">City:</span>
-                <span className="itemValue">
-                  {data.city}
-                </span>
-              </div>
-              <div className="detailItem">
                 <span className="itemKey">Address:</span>
+                <span className="itemValue">{data.address}</span>
+              </div>
+              <div className="detailItem">
+                <span className="itemKey">Contack No:</span>
+                <span className="itemValue">{data.contactNumber}</span>
+              </div>
+              <div className="detailItem">
+                <span className="itemKey">Type:</span>
                 <span className="itemValue">
-                  {data.address}
+                  {data.type}
                 </span>
               </div>
               <div className="detailItem">
                 <span className="itemKey">Price:</span>
-                <span className="itemValue"><b>LKR {data.cheapestPrice}</b></span>
+                <span className="itemValue">
+                  {data.price}
+                </span>
+              </div>
+              <div className="detailItem">
+                <span className="itemKey">Num Of Beds:</span>
+                <span className="itemValue"> {data.numberOfBeds}
+                </span>
+              </div>
+              <div className="detailItem">
+                <span className="itemKey">Distance:</span>
+                <span className="itemValue">
+                  {data.distance}
+                </span>
+              </div>
+              <div className="detailItem">
+                <span className="itemKey">Rating:</span>
+                <span className="itemValue">
+                  {data.rating}
+                </span>
               </div>
             </div>
           </div>
@@ -110,7 +123,7 @@ return (
 
        <form onSubmitCapture={handleSubmit(handleClick)}>
       <div>
-        <h1>Hotel Update Form</h1>
+        <h1>Room Update Form</h1>
       </div>
 
 
@@ -129,41 +142,13 @@ return (
       </div>
 
       <div>
-        <label>Type</label>
-          <input
-            id="type"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.type}
-          
-            {...register("type", { required: false  })}
-          />
-        <error>
-          {errors.type?.type === "required" && "type is required"}
-        </error>
-      </div>
-
-      <div>
-        <label>City</label>
-          <input
-            id="city"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.city}
-          
-            {...register("city", { required: true })}
-          />
-        <error>
-          {errors.city?.type === "required" && "city is required"}
-        </error>
-      </div>
-
-      <div>
         <label>Address</label>
           <input
             id="address"
             onChangeCapture = {handleChange}
             defaultValue= {data.address}
           
-            {...register("address", { required: true })}
+            {...register("address", { required: false  })}
           />
         <error>
           {errors.address?.type === "required" && "address is required"}
@@ -171,7 +156,63 @@ return (
       </div>
 
       <div>
-        <label>Distance from City Center</label>
+        <label>Contact Number</label>
+          <input
+            id="contactNumber"
+            onChangeCapture = {handleChange}
+            defaultValue= {data.contactNumber}
+          
+            {...register("contactNumber", { required: true })}
+          />
+        <error>
+          {errors.contactNumber?.type === "required" && "contactNumber is required"}
+        </error>
+      </div>
+
+      <div>
+        <label>type</label>
+          <input
+            id="type"
+            onChangeCapture = {handleChange}
+            defaultValue= {data.type}
+          
+            {...register("type", { required: true })}
+          />
+        <error>
+          {errors.type?.type === "required" && "type is required"}
+        </error>
+      </div>
+
+      <div>
+        <label>Price</label>
+          <input
+            id="price"
+            onChangeCapture = {handleChange}
+            defaultValue= {data.price}
+          
+            {...register("price", { required: true })}
+          />
+        <error>
+          {errors.price?.type === "required" && "price is required"}
+        </error>
+      </div>
+
+      <div>
+        <label>Number Of Beds</label>
+          <input
+            id="numberOfBeds"
+            onChangeCapture = {handleChange}
+            defaultValue= {data.numberOfBeds}
+          
+            {...register("numberOfBeds", { required: true })}
+          />
+        <error>
+          {errors.numberOfBeds?.type === "required" && "numberOfBeds is required"}
+        </error>
+      </div>
+
+      <div>
+        <label>Distance</label>
           <input
             id="distance"
             onChangeCapture = {handleChange}
@@ -185,44 +226,16 @@ return (
       </div>
 
       <div>
-        <label>Title</label>
+        <label>Rating</label>
           <input
-            id="title"
+            id="rating"
             onChangeCapture = {handleChange}
-            defaultValue= {data.title}
-          
-            {...register("title", { required: true })}
-          />
-        <error>
-          {errors.title?.type === "required" && "title is required"}
-        </error>
-      </div>
-
-      <div>
-        <label>Description</label>
-          <input
-            id="desc"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.desc}
-          
-            {...register("desc", { required: true })}
-          />
-        <error>
-          {errors.desc?.type === "required" && "desc is required"}
-        </error>
-      </div>
-
-      <div>
-        <label>Price</label>
-          <input
-            id="cheapestPrice"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.cheapestPrice}
+            defaultValue= {data.rating}
             
-            {...register("cheapestPrice", { required: true })}
+            {...register("rating", { required: true })}
           />
         <error>
-          {errors.cheapestPrice?.type === "required" && "tPrice is required"}
+          {errors.rating?.type === "required" && "rating is required"}
         </error>
       </div>
 
@@ -241,4 +254,4 @@ return (
   </div>
 );
 };
-export default SingleHotel;
+export default SingleRoom;

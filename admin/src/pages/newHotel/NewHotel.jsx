@@ -33,6 +33,7 @@ const NewHotel = () => {
 
  const handleClick = async (e)=>{
   e.preventDefault();
+
   try{
     const list = await Promise.all(
       Object.values(files).map( async(file)=>{
@@ -43,6 +44,7 @@ const NewHotel = () => {
         const {url} = uploadRes.data;
         return url
     }));
+    
     const newHotel = {
       ...info,rooms,photos: list,
     };
