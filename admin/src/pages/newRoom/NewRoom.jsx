@@ -8,7 +8,7 @@ import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 
 const NewRoom = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+  const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [hotelId, setHotelId] = useState([undefined]);
   const [rooms, setRooms] = useState([]);
@@ -20,13 +20,32 @@ const NewRoom = ({ inputs, title }) => {
     setInfo( (prev) => ({...prev, [e.target.id] : e.target.value }));
 };
 
+function refreshPage() {
+  window.location.reload(false);
+}
+
 
 const handleClick = async (e)=>{
   e.preventDefault()
-  const roomNumbers = rooms.split(",").map((room)=> ({number : room}));
+  
   try{
+    const list = await Promise.all(
+      Object.values(files).map( async(file)=>{
+      const data = new FormData();
+      data.append("file" , file );
+      data.append("upload_preset" , "upload");
+      const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/namal97/image/upload" , data);
+        const {url} = uploadRes.data;
+        return url
+    }));
+
+    const roomNumbers = {
+      ...info,photos: list,
+    }
    
-   await axios.post('/rooms',{...info, roomNumbers});
+   await axios.post('/rooms', roomNumbers);
+   refreshPage();
+
    }catch(err){
   console.log(err);
   }
@@ -44,8 +63,8 @@ const handleClick = async (e)=>{
           <div className="left">
             <img
               src={
-                file
-                  ? URL.createObjectURL(file)
+                files
+                  ? URL.createObjectURL(files[0])
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
               alt=""
@@ -53,6 +72,20 @@ const handleClick = async (e)=>{
           </div>
           <div className="right">
             <form>
+
+            <div className="formInput">
+                <label htmlFor="file">
+                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  multiple
+                  onChange={(e) => setFiles(e.target.files)}
+                  style={{ display: "none" }}
+                />
+              </div>
+
               {roomInputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
@@ -68,7 +101,7 @@ const handleClick = async (e)=>{
                   <textarea onChange={e=>setRooms(e.target.value)} placeholder="give comma between room numbers"></textarea>
                 </div> */}
 
-                {/* <div className="formInput">
+                <div className="formInput">
                   <label>choose a hotel</label>
                   <select id="hotelId"  onchange={e=>setHotelId(e.target.value)}>
                   {loading ? "loading" : data && data.map(hotel=>(
@@ -76,7 +109,7 @@ const handleClick = async (e)=>{
                     
                   ))}
                   </select>
-                </div> */}
+                </div>
 
 
                 <button onClick={handleClick}>ADD ROOM</button>
