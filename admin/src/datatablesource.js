@@ -124,12 +124,24 @@ export const vehicleColumns = [
 
 
 export const roomColumns = [
-  {field: "_id", headerName: "ID", width: 100},
+
   {
     field: "name",
     headerName: "Name",
-    width: 100,
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+
+          <img className="cellImg" src={params.row.photos || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="" />
+          {params.row.vehicle_model}
+        </div>
+      );
+    },
   },
+
+  {field: "_id", headerName: "ID", width: 100},
+
   {
     field: "address",
     headerName: "Address",

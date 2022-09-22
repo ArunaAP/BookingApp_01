@@ -10,14 +10,14 @@ import useFetch from "../../hooks/useFetch";
 
 
 const SingleVehicle = () => {
-//Fetch single hotel
+
 
 const location = useLocation();
 const id = location.pathname.split("/")[2];
 const { data, loading, error, reFetch } = useFetch(`/vehicles/${id}`);
 
 
-//update vehicle
+
 const [file, setFile] = useState("");
 const [info , setInfo] = useState({});
 
