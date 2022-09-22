@@ -13,6 +13,7 @@ import { hotelColumns, userColumns, vehicleColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel"; 
 import SingleHotel from "./pages/singleHotel/SingleHotel"; 
 import NewVehicle from "./pages/newVehicle/NewVehicle";
+import SingleVehicle from "./pages/singleVehicle/SingleVehicle";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -116,7 +117,7 @@ function App() {
                 path=":vehicletId" 
                 element={   
                   <ProtectedRoute>
-                    <SingleHotel/>
+                    <SingleVehicle/>
                   </ProtectedRoute>
                 } 
               />
