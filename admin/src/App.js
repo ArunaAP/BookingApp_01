@@ -12,6 +12,7 @@ import { AuthContext } from "./context/AuthContex";
 import { hotelColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel"; 
 import SingleHotel from "./pages/singleHotel/SingleHotel"; 
+import Datatable from "./components/datatable/Datatable";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -78,6 +79,8 @@ function App() {
                </ProtectedRoute>
               }
               />
+
+
             </Route>
           </Route>
         </Routes>

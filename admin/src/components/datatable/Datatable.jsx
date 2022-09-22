@@ -10,11 +10,12 @@ import axios from "axios";
 
 const Datatable = ({columns}) => {
 
-  const location = useLocation();
+  const location = useLocation(); //use for both add and filter functions
   const path = location.pathname.split("/")[1];
   const [list , setList] = useState();
-   const {data , loading , error} = useFetch(`/${path}`)
+  const {data , loading , error} = useFetch(`/${path}`)
 
+   //add User
    useEffect(() => {
           setList(data);
    },[data])
@@ -60,6 +61,9 @@ const Datatable = ({columns}) => {
           Add New
         </Link>
       </div>
+
+    
+
       <DataGrid
         className="datagrid"
         rows={list}
