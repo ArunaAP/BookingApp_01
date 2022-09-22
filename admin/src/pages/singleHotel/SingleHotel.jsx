@@ -14,10 +14,10 @@ const SingleHotel = () => {
 
 const location = useLocation();
 const id = location.pathname.split("/")[2];
-const { data, loading, error, reFetch } = useFetch(`/hotels/find/${id}`);
+const { data, loading, error, reFetch } = useFetch(`/vehicles/${id}`);
 
 
-//update hotel
+//update vehicle
 const [file, setFile] = useState("");
 const [info , setInfo] = useState({});
 
@@ -38,16 +38,16 @@ const handleClick = async e =>{
   data.append("upload_preset" , "upload")
 
   try{
-      const newHotel = {
+      const newVehicle = {
         ...info,
       };
     
-      await axios.put(`/hotels/${id}` , newHotel);
+      await axios.put(`/vehicles/${id}` , newVehicle);
       refreshPage() 
 
   }catch(err){
     console.log(err)
-    alert("Hotel Not Update ")
+    alert("Vehicle Not Update ")
   }
 }
 
@@ -68,36 +68,31 @@ return (
       <div className="top">
         <div className="left">
          
-          <h1 className="title">Hotel Information</h1>
+          <h1 className="title">Vehicle Information</h1>
           <div className="item">
 
             {/* to get photo */}
-        <img className="itemImg" src={data.photos || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="avatar" />
+        <img className="itemImg" src={data.image || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="avatar" />
             <div className="details">
-              <h1 className="itemTitle">{data.name}</h1>
+              <h1 className="itemTitle">{data.vehicle_model}</h1>
               <div className="detailItem">
-                <span className="itemKey">Type:</span>
-                <span className="itemValue">{data.type}</span>
+                <span className="itemKey">Vehicle Class:</span>
+                <span className="itemValue">{data.vehicle_class}</span>
               </div>
               <div className="detailItem">
-                <span className="itemKey">Title:</span>
-                <span className="itemValue">{data.title}</span>
+                <span className="itemKey">Vehicle Type:</span>
+                <span className="itemValue">{data.vehicle_type}</span>
               </div>
               <div className="detailItem">
-                <span className="itemKey">City:</span>
+                <span className="itemKey">Vehicle Seats:</span>
                 <span className="itemValue">
-                  {data.city}
+                  {data.vehicle_seats}
                 </span>
               </div>
+              
               <div className="detailItem">
-                <span className="itemKey">Address:</span>
-                <span className="itemValue">
-                  {data.address}
-                </span>
-              </div>
-              <div className="detailItem">
-                <span className="itemKey">Price:</span>
-                <span className="itemValue"><b>LKR {data.cheapestPrice}</b></span>
+                <span className="itemKey">Vehicle Register Number:</span>
+                <span className="itemValue"> {data.vehicle_register_number}</span>
               </div>
             </div>
           </div>
@@ -110,124 +105,84 @@ return (
 
        <form onSubmitCapture={handleSubmit(handleClick)}>
       <div>
-        <h1>Hotel Update Form</h1>
+        <h1>Vehicle Update Form</h1>
       </div>
 
 
       <div>
-        <label>Name</label>
+        <label>Vehicle Model</label>
           <input
-            id="name"
+            id="vehicle_model"
             onChangeCapture = {handleChange}
-            defaultValue= {data.name}
+            defaultValue= {data.vehicle_model}
           
-            {...register("name", { required: true })}
+            {...register("vehicle_model", { required: true })}
           />
         <error>
-          {errors.name?.type === "required" && "Name is required"}
+          {errors.vehicle_model?.type === "required" && "Model is required"}
         </error>
       </div>
 
+
       <div>
-        <label>Type</label>
+        <label>Vehicle Class</label>
           <input
-            id="type"
+            id="vehicle_class"
             onChangeCapture = {handleChange}
-            defaultValue= {data.type}
+            defaultValue= {data.vehicle_class}
           
-            {...register("type", { required: false  })}
+            {...register("vehicle_class", { required: true })}
           />
         <error>
-          {errors.type?.type === "required" && "type is required"}
+          {errors.vehicle_class?.type === "required" && "Class is required"}
         </error>
       </div>
 
       <div>
-        <label>City</label>
+        <label>Vehicle Type</label>
           <input
-            id="city"
+            id="vehicle_type"
             onChangeCapture = {handleChange}
-            defaultValue= {data.city}
+            defaultValue= {data.vehicle_type}
           
-            {...register("city", { required: true })}
+            {...register("vehicle_type", { required: false  })}
           />
         <error>
-          {errors.city?.type === "required" && "city is required"}
+          {errors.vehicle_type?.type === "required" && "type is required"}
         </error>
       </div>
+      
+
 
       <div>
-        <label>Address</label>
+        <label>Vehicle Seats</label>
           <input
-            id="address"
+            id="vehicle_seats"
             onChangeCapture = {handleChange}
-            defaultValue= {data.address}
+            defaultValue= {data.vehicle_seats}
           
-            {...register("address", { required: true })}
+            {...register("vehicle_seats", { required: true })}
           />
         <error>
-          {errors.address?.type === "required" && "address is required"}
+          {errors.vehicle_seats?.type === "required" && "Seats is required"}
         </error>
       </div>
 
       <div>
-        <label>Distance from City Center</label>
+        <label>Vehicle Vegister Number</label>
           <input
-            id="distance"
+            id="vehicle_register_number"
             onChangeCapture = {handleChange}
-            defaultValue= {data.distance}
+            defaultValue= {data.vehicle_register_number}
           
-            {...register("distance", { required: true })}
+            {...register("vehicle_register_number", { required: true })}
           />
         <error>
-          {errors.distance?.type === "required" && "distance is required"}
+          {errors.vehicle_register_number?.type === "required" && "Reg num is required"}
         </error>
       </div>
 
-      <div>
-        <label>Title</label>
-          <input
-            id="title"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.title}
-          
-            {...register("title", { required: true })}
-          />
-        <error>
-          {errors.title?.type === "required" && "title is required"}
-        </error>
-      </div>
-
-      <div>
-        <label>Description</label>
-          <input
-            id="desc"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.desc}
-          
-            {...register("desc", { required: true })}
-          />
-        <error>
-          {errors.desc?.type === "required" && "desc is required"}
-        </error>
-      </div>
-
-      <div>
-        <label>Price</label>
-          <input
-            id="cheapestPrice"
-            onChangeCapture = {handleChange}
-            defaultValue= {data.cheapestPrice}
-            
-            {...register("cheapestPrice", { required: true })}
-          />
-        <error>
-          {errors.cheapestPrice?.type === "required" && "tPrice is required"}
-        </error>
-      </div>
-
-
-    
+      
       <div>
         <input className="button" type="submit" />
       </div>
@@ -238,13 +193,6 @@ return (
       </div>
       <div className="bottom">
 
-
-
-
-       
-
-      
-    
       </div>
     </div>
   </div>
