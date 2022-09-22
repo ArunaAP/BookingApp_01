@@ -41,37 +41,22 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/rooms" style={{ textDecoration: "none" }}>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Rooms</span>
-          </li>
+
+            <li>
+              <StoreIcon className="icon" />
+              <span>Rooms</span>
+            </li>
           </Link>
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
-          {/* <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
-          </li> */}
+          
+          <Link to="/vehicles" style={{ textDecoration: "none" }}>
+            <li>
+              <StoreIcon className="icon" />
+              <span>Vehicle</span>
+            </li>
+          </Link>
+          
+
+   
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
