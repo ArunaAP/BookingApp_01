@@ -16,6 +16,7 @@ import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom"; 
 import SingleHotel from "./pages/singleHotel/SingleHotel"; 
 import NewVehicle from "./pages/newVehicle/NewVehicle";
+import SingleVehicle from "./pages/singleVehicle/SingleVehicle";
 
 
 function App() {
@@ -120,7 +121,7 @@ function App() {
                 path=":vehicletId" 
                 element={   
                   <ProtectedRoute>
-                    <SingleHotel/>
+                    <SingleVehicle/>
                   </ProtectedRoute>
                 } 
               />
