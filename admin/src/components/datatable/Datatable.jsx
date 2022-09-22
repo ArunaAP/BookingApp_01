@@ -51,6 +51,19 @@ const Datatable = ({columns}) => {
               <div className="viewButton">Update</div>
             </Link>
 
+            <Link to="/rooms/test" style={{ textDecoration: "none" }}>
+              <div className="viewButton">View</div>
+            </Link>
+
+            <div
+              className="deleteButton"
+              onClick={() => handleDelete(params.row._id)}
+            >
+              Delete
+            </div>
+
+            
+
 
           </div>
         );
