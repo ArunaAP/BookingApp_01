@@ -41,6 +41,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/rooms" style={{ textDecoration: "none" }}>
+
             <li>
               <StoreIcon className="icon" />
               <span>Rooms</span>
@@ -54,6 +55,8 @@ const Sidebar = () => {
             </li>
           </Link>
           
+
+   
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />

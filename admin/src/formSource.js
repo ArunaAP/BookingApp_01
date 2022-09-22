@@ -87,6 +87,7 @@ export const userInputs = [
     },
   ];
   
+
   export const vehicleInputs = [
     {
       id: "vehicle_class",
@@ -120,3 +121,58 @@ export const userInputs = [
     },
     
   ];
+
+
+
+  export const roomInputs = [
+    {
+      id: "name",
+      label: "Name",
+      type: "text",
+      placeholder: "My Room1",
+    },
+    {
+      id: "address",
+      label: "Address",
+      type: "text",
+      placeholder: " Bentota",
+    },
+    {
+      id: "contactNumber",
+      label: "Contact Number",
+      type: "text",
+      placeholder: "0712045678",
+    },
+    {
+      id: "type",
+      label: "Type",
+      type: "text",
+      placeholder: "single",
+    },
+    {
+      id: "price",
+      label: "Price",
+      type: "text",
+      placeholder: "50",
+    },
+    {
+      id: "numberOfBeds",
+      label: "Number of beds",
+      type: "text",
+      placeholder: "2",
+    },
+    {
+      id: "distance",
+      label: "Distance from City Center",
+      type: "text",
+      placeholder: "500",
+    },
+    {
+      id: "rating",
+      label: "Rating",
+      type: "text",
+      placeholder: "4",
+    },
+];
+  
+

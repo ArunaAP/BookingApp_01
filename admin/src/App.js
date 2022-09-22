@@ -10,9 +10,13 @@ import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContex";
 import { hotelColumns, userColumns, vehicleColumns } from "./datatablesource";
+import { roomColumns} from "./datatablesource";
+
 import NewHotel from "./pages/newHotel/NewHotel"; 
+import NewRoom from "./pages/newRoom/NewRoom"; 
 import SingleHotel from "./pages/singleHotel/SingleHotel"; 
 import NewVehicle from "./pages/newVehicle/NewVehicle";
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -137,6 +141,32 @@ function App() {
 
 
             </Route>
+
+            <Route path="rooms">
+              <Route index element=
+              {<ProtectedRoute>
+                   <List columns={roomColumns}/>
+              </ProtectedRoute>} />
+              <Route path=":roomId" element={
+                            <ProtectedRoute>
+                            <Single />
+                         </ProtectedRoute>
+              } />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute>
+                   <NewRoom />
+               </ProtectedRoute>
+              }
+              />
+            </Route>
+
+
+
+
+
+
           </Route>
         </Routes>
       </BrowserRouter>
