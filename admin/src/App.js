@@ -18,6 +18,7 @@ import SingleHotel from "./pages/singleHotel/SingleHotel";
 import NewVehicle from "./pages/newVehicle/NewVehicle";
 import SingleVehicle from "./pages/singleVehicle/SingleVehicle";
 import SingleRoom from "./pages/singleRoom/SingleRoom";
+import Datatable from "./components/datatable/Datatable";
 
 
 function App() {
@@ -164,6 +165,8 @@ function App() {
                </ProtectedRoute>
               }
               />
+
+
             </Route>
 
 

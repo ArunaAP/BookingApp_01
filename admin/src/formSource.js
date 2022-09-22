@@ -10,6 +10,7 @@ export const userInputs = [
       label: "Email",
       type: "mail",
       placeholder: "useer@gmail.com",
+
     },
     {
       id: "phone",
