@@ -146,6 +146,7 @@
     "readdirp" "~3.6.0"
   optionalDependencies:
 
+
     "fsevents" "~2.3.2"
 
 "concat-map@0.0.1":
@@ -562,6 +563,7 @@
   "integrity" "sha512-f+/WsED+xF4B74l3k9V/XkTVj5/fxFH2o5ToKXd8Iyi5UhM+sO9u0Ape17Mvl/GkZaFtM0HQnzAG5OTmhKw+tQ=="
   "resolved" "https://registry.npmjs.org/mongodb-connection-string-url/-/mongodb-connection-string-url-2.5.3.tgz"
   "version" "2.5.3"
+
 
   dependencies:
     "@types/whatwg-url" "^8.2.1"
