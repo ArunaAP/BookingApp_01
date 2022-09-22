@@ -33,36 +33,19 @@ const Datatable = ({columns}) => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 250,
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/hotels/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row._id)}
-            >
-              Delete
-            </div>
-
-            <Link to="/users/new" style={{ textDecoration: "none" }}>
+            <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">Update</div>
             </Link>
-
-            <Link to="/rooms/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
-
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row._id)}
-            >
+              onClick={() => handleDelete(params.row._id)}>
               Delete
             </div>
 
-            
 
 
           </div>

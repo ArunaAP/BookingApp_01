@@ -1,4 +1,4 @@
-import "./newHotel.scss";
+  import "./newHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
@@ -25,6 +25,10 @@ const NewHotel = () => {
     setRooms(value);
   }; 
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
  
 
  const handleClick = async (e)=>{
@@ -43,6 +47,7 @@ const NewHotel = () => {
       ...info,rooms,photos: list,
     };
     await axios.post("/hotels", newHotel)
+    refreshPage() 
   }catch(err){
     console.log(err)
   }

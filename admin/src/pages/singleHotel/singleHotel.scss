@@ -3,6 +3,7 @@
   width: 100%;
   .singleContainer {
     flex: 6;
+    
 
     .top {
       padding: 20px;
@@ -15,6 +16,8 @@
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
         position: relative;
+        
+        
 
         .editButton {
           position: absolute;
@@ -40,6 +43,8 @@
           }
 
           .details {
+
+            
             .itemTitle {
               margin-bottom: 10px;
               color: #555;
@@ -48,6 +53,7 @@
             .detailItem {
               margin-bottom: 10px;
               font-size: 14px;
+              
 
               .itemKey {
                 font-weight: bold;
@@ -93,19 +99,18 @@
       align-items: center;
       min-height: 100vh;
       -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
-      background-color: rgba(128, 128, 128, 0.2);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      
       
     }
     .card {
       position: relative;
       margin: 150px auto;
+      margin-top: 10px;
       width: 450px;
-      padding: 40px;
+      padding: 10px;
       border-radius: 16px;
       background-color: #fff;
-      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
-      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
     }
     h1 {
       text-align: center;

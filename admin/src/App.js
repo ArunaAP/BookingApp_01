@@ -13,6 +13,8 @@ import { hotelColumns, userColumns } from "./datatablesource";
 import { roomColumns} from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel"; 
 import NewRoom from "./pages/newRoom/NewRoom"; 
+import SingleHotel from "./pages/singleHotel/SingleHotel"; 
+
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -65,10 +67,11 @@ function App() {
               {<ProtectedRoute>
                    <List columns={hotelColumns}/>
               </ProtectedRoute>} />
-              <Route path=":productId" element={
-                            <ProtectedRoute>
-                            <Single />
-                         </ProtectedRoute>
+
+              <Route path=":productId" element={   
+                  <ProtectedRoute>
+                    <SingleHotel/>
+                  </ProtectedRoute>
               } />
               <Route
                 path="new"
