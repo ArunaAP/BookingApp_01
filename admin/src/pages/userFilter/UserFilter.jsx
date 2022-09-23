@@ -10,9 +10,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import IconButton from '@mui/material/IconButton';
-
-
-
+import JsPDF from 'jspdf';
 
 function UserFilter() {
   
@@ -33,11 +31,21 @@ function UserFilter() {
       
       ));
     }
+
+     const generatePDF = () => {
+
+       const report = new JsPDF('landscape','pt','a3');
+     report.html(document.querySelector('.datatable')).then(() => {
+          report.save('report.pdf');
+      });
+    }
+
     function refreshPage() {
       window.location.reload(false);
     }
 
-
+    
+  
     return (
             <div className="home">
             <Sidebar />
@@ -63,7 +71,7 @@ function UserFilter() {
                   <Button className="filterbtn2" onClick={refreshPage}  variant="contained" disableElevation>
                     Clear
                   </Button>
-                  <IconButton className="filterbtn3"  color="error" aria-label="add an alarm">
+                  <IconButton className="filterbtn3" onClick=  {generatePDF} color="error" aria-label="add an alarm">
                   <FileDownloadIcon />
                 </IconButton>          
           </div>
