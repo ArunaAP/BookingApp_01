@@ -22,13 +22,13 @@ export const userColumns = [
   {
     field: "country",
     headerName: "Country",  
-    width: 100,
+    width: 150,
   },
 
   {
     field: "city",
     headerName: "City",  
-    width: 100,
+    width: 150,
   },
 
   {
@@ -173,4 +173,58 @@ export const roomColumns = [
   },
 
 ]
+
+
+export const countries = [
+
+  {
+
+
+    label: 'United Kingdom',
+
+  },
+
+  {
+
+    code: 'USA',
+    label: 'United States of America ',
+
+  },
+
+  {
+
+    code: 'SL',
+    label: 'Sri Lanka ',
+
+  },
+
+  {
+
+    code: 'IND',
+    label: 'India ',
+
+  },
+  
+];
+
+
+export const city = [
+
+  {
+    label: 'London',
+  },
+
+  {
+    label: 'NewYork ',
+  },
+
+  {
+    label: 'Colombo ',
+  },
+
+  {
+    label: 'Mumbai ',
+  },
+  
+];
 
