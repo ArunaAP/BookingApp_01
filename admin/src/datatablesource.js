@@ -134,23 +134,21 @@ export const roomColumns = [
         <div className="cellWithImg">
 
           <img className="cellImg" src={params.row.photos || "https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"} alt="" />
-          {params.row.vehicle_model}
+          {params.row.name}
         </div>
       );
     },
   },
 
-  {field: "_id", headerName: "ID", width: 100},
-
   {
     field: "address",
     headerName: "Address",
-    width: 150,
+    width: 120,
   },
   {
     field: "contactNumber",
-    headerName: "Contact Number",
-    width: 150,
+    headerName: "Contact",
+    width: 120,
   },
   {
     field: "type",
@@ -160,7 +158,7 @@ export const roomColumns = [
   {
     field: "price",
     headerName: "Price",
-    width: 100,
+    width: 80,
   },
   
   {
