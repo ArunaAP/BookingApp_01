@@ -51,46 +51,46 @@ function UserFilter() {
             <Sidebar />
             <div className="homeContainer">
               <Navbar />
-              <div className="search">
+                                    <div className="search">
 
-                <input className="serch" 
-                onChangeCapture ={(e) => setCountry(e.target.value)}
-                type="text" 
-                placeholder="Filter Country"
-                />
+                                      <input className="serch" 
+                                      onChangeCapture ={(e) => setCountry(e.target.value)}
+                                      type="text" 
+                                      placeholder="Filter Country"
+                                      />
 
-              <input className="serch" 
-              onChangeCapture ={(e) => setCity(e.target.value)}
-              type="text" 
-              placeholder="Filter City"
-              />   
-          <div className="btn_list">
-                    <Button className="filterbtn1" onClick={handleClick} variant="contained" disableElevation>
-                    Filter User
-                  </Button>
-                  <Button className="filterbtn2" onClick={refreshPage}  variant="contained" disableElevation>
-                    Clear
-                  </Button>
-                  <IconButton className="filterbtn3" onClick=  {generatePDF} color="error" aria-label="add an alarm">
-                  <FileDownloadIcon />
-                </IconButton>          
-          </div>
-
-
+                                    <input className="serch" 
+                                    onChangeCapture ={(e) => setCity(e.target.value)}
+                                    type="text" 
+                                    placeholder="Filter City"
+                                    />   
+                                <div className="btn_list">
+                                          <Button className="filterbtn1" onClick={handleClick} variant="contained" disableElevation>
+                                          Filter User
+                                        </Button>
+                                        <Button className="filterbtn2" onClick={refreshPage}  variant="contained" disableElevation>
+                                          Clear
+                                        </Button>
+                                        <IconButton className="filterbtn3" onClick=  {generatePDF} color="error" aria-label="add an alarm">
+                                        <FileDownloadIcon />
+                                      </IconButton>          
+                                </div>
 
 
-        </div>
 
-       <div className="datatable">
-      <DataGrid
-        className="datagrid"
-        rows={list}
-        columns={userColumns}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        getRowId={row=>row._id}
-      />
-    </div> 
+
+                              </div>
+
+                            <div className="datatable">
+                            <DataGrid
+                              className="datagrid"
+                              rows={list}
+                              columns={userColumns}
+                              pageSize={9}
+                              rowsPerPageOptions={[9]}
+                              getRowId={row=>row._id}
+                            />
+                          </div> 
 
 {/* //end of the container */}
     </div>

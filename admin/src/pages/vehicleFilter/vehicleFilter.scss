@@ -1,0 +1,30 @@
+.search {
+    display: flex;
+    align-items: center;
+    border: 0.5px solid lightgray;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.serch{
+    display: flex;
+    align-items: center;
+    padding:8px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn_list{
+
+    .filterbtn1{
+        margin-left: 10px;
+        background-color:  #6439ff;
+    }
+    .filterbtn2{
+        margin-left: 10px;
+        background-color:  #6439ff;
+    }
+    .filterbtn3{
+        margin-left: 120px;
+    }
+}
