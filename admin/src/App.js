@@ -11,14 +11,17 @@ import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContex";
 import { hotelColumns, userColumns, vehicleColumns } from "./datatablesource";
 import { roomColumns} from "./datatablesource";
-
 import NewHotel from "./pages/newHotel/NewHotel"; 
 import NewRoom from "./pages/newRoom/NewRoom"; 
 import SingleHotel from "./pages/singleHotel/SingleHotel"; 
 import NewVehicle from "./pages/newVehicle/NewVehicle";
 import SingleVehicle from "./pages/singleVehicle/SingleVehicle";
 import SingleRoom from "./pages/singleRoom/SingleRoom";
-import Datatable from "./components/datatable/Datatable";
+import UserFilter from  "./pages/userFilter/UserFilter"
+import HotelFilter from "./pages/hotelFilter/HotelFilter"
+import RoomFilter from "./pages/roomFilter/RoomFilter"
+import VehicleFilter from "./pages/vehicleFilter/VehicleFilter"
+
 
 
 function App() {
@@ -166,12 +169,55 @@ function App() {
               }
               />
 
-
             </Route>
 
 
+            <Route
+                path="dashbord"
+                element={
+                  <ProtectedRoute>
+                        <Home/>
+               </ProtectedRoute>
+              }
+              />
 
 
+            <Route
+                path="userFilter"
+                element={
+                  <ProtectedRoute>
+                        <UserFilter/>
+               </ProtectedRoute>
+              }
+              />
+
+
+              <Route
+                path="hotelFilter"
+                element={
+                  <ProtectedRoute>
+                        <HotelFilter/>
+               </ProtectedRoute>
+              }
+              />
+
+              <Route
+                path="roomFilter"
+                element={
+                  <ProtectedRoute>
+                        <RoomFilter/>
+               </ProtectedRoute>
+              }
+              />
+
+              <Route
+                path="vehicleFilter"
+                element={
+                  <ProtectedRoute>
+                        <VehicleFilter/>
+               </ProtectedRoute>
+              }
+              />
 
 
           </Route>

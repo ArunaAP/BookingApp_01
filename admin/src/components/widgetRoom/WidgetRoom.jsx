@@ -1,23 +1,23 @@
-import "./widget.scss";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import "./widgetRoom.scss";
+import BedIcon from '@mui/icons-material/Bed';
 import { Link } from "react-router-dom";
-const Widget = ( ) => {
+
+const WidgetRoom = ({ type }) => {
   let data;
 
+  //temporary
   const amount = 100;
 
 
 
       data = {
-        title: "USERS",
-        link: "View User Report",
+        title: "ROOMS",
+   
+        link: "View Room Report",
         icon: (
-          <PersonOutlinedIcon
+          <BedIcon
             className="icon"
-            style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
-            }}
+            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
         ),
       };
@@ -30,7 +30,7 @@ const Widget = ( ) => {
         <span className="counter">
            {amount}
         </span>
-        <Link to="/userFilter" style={{ textDecoration: "none" }}>
+        <Link to="/roomFilter" style={{ textDecoration: "none" }}>
         <button className="viewButton">{data.link}</button>
         </Link>
       </div>
@@ -41,4 +41,4 @@ const Widget = ( ) => {
   );
 };
 
-export default Widget;
+export default WidgetRoom;

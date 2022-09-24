@@ -1,22 +1,25 @@
-import "./widget.scss";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import "./widgetVehicle.scss";
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
 import { Link } from "react-router-dom";
-const Widget = ( ) => {
+
+const WidgetVehicle = () => {
   let data;
 
+  //temporary
   const amount = 100;
 
 
 
       data = {
-        title: "USERS",
-        link: "View User Report",
+        title: "VEHICLES",
+
+        link: "View Vehicle Report",
         icon: (
-          <PersonOutlinedIcon
+          <DriveEtaIcon
             className="icon"
             style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
+              backgroundColor: "rgba(128, 0, 128, 0.2)",
+              color: "purple",
             }}
           />
         ),
@@ -30,7 +33,7 @@ const Widget = ( ) => {
         <span className="counter">
            {amount}
         </span>
-        <Link to="/userFilter" style={{ textDecoration: "none" }}>
+        <Link to="/vehicleFilter" style={{ textDecoration: "none" }}>
         <button className="viewButton">{data.link}</button>
         </Link>
       </div>
@@ -41,4 +44,4 @@ const Widget = ( ) => {
   );
 };
 
-export default Widget;
+export default WidgetVehicle;

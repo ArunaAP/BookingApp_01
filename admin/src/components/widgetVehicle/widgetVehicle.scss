@@ -50,20 +50,13 @@
       border-radius: 5px;
       align-self: flex-end;
     }
+
     .viewButton {
       padding: 2px 5px;
       border-radius: 5px;
       color: darkblue;
       border: 1px dotted rgba(0, 0, 139, 0.596);
       cursor: pointer;
-    }
-    .viewButton:hover {
-      padding: 2px 5px;
-      border-radius: 5px;
-      color: white;
-      border: 1px dotted rgba(0, 0, 139, 0.596);
-      cursor: pointer;
-      background-color:  #6439ff;
     }
   }
 }

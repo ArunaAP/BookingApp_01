@@ -1,27 +1,30 @@
-import "./widget.scss";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import "./widgetHotel.scss";
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import { Link } from "react-router-dom";
-const Widget = ( ) => {
+
+
+const WidgetHotel = () => {
   let data;
 
+  //temporary
   const amount = 100;
 
 
 
       data = {
-        title: "USERS",
-        link: "View User Report",
+        title: "HOTELS",
+        isMoney: false,
+        link: "View Hotel Report",
         icon: (
-          <PersonOutlinedIcon
+          <MapsHomeWorkIcon
             className="icon"
             style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
+              backgroundColor: "rgba(218, 165, 32, 0.2)",
+              color: "goldenrod",
             }}
           />
         ),
       };
-
 
   return (
     <div className="widget">
@@ -30,7 +33,7 @@ const Widget = ( ) => {
         <span className="counter">
            {amount}
         </span>
-        <Link to="/userFilter" style={{ textDecoration: "none" }}>
+        <Link to="/hotelFilter" style={{ textDecoration: "none" }}>
         <button className="viewButton">{data.link}</button>
         </Link>
       </div>
@@ -41,4 +44,4 @@ const Widget = ( ) => {
   );
 };
 
-export default Widget;
+export default WidgetHotel;
