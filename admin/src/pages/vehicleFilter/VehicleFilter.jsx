@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import IconButton from '@mui/material/IconButton';
 import JsPDF from 'jspdf';
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 function VehicleFilter() {
 
@@ -75,6 +76,11 @@ function VehicleFilter() {
                         <FileDownloadIcon />
                       </IconButton>          
                       </div>
+
+                      <div className="search2">
+                                         <input type="text" placeholder="Search..." />
+                                         <SearchOutlinedIcon />
+                                           </div>
 
                       </div>
                       <div className="datatable">
