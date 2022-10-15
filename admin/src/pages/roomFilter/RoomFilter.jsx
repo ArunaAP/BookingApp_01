@@ -19,6 +19,7 @@ function RoomFilter() {
 
   const [type, setType] = useState()
   const [address, setAdress] = useState()
+  const [srch , setserch] = useState()
 
   //add User
   useEffect(() => {
@@ -26,8 +27,19 @@ function RoomFilter() {
    },[data])
 
    const handleClick = ()=>{
-    setList(list.filter((item) =>     (    ( item.type === type ) && ( item.address ===  address )    )    
+    setList(list.filter((item) =>  ( type.toLowerCase().includes(item.type.toLowerCase()) )  &&    
+                                                    ( address.toLowerCase().includes(item.address.toLowerCase()) ) 
     
+    ));
+  }
+  const searchClick = ()=>{
+    setList(list.filter((item) =>  ( srch.toLowerCase().includes(item.name.toLowerCase()) )                    ||    
+                                                    ( srch.toLowerCase().includes(item.address.toLowerCase()) )      || 
+                                                    ( srch.toLowerCase().includes(item.contactNumber.toLowerCase()) )    || 
+                                                    ( srch.toLowerCase().includes(item.type.toLowerCase()) )      || 
+                                                    ( srch.toLowerCase().includes(item.price.toLowerCase()) )   || 
+                                                    ( srch.toLowerCase().includes(item.distance.toLowerCase()) )      || 
+                                                    ( srch.includes(item.rating) )
     ));
   }
 
@@ -78,9 +90,12 @@ function RoomFilter() {
                   </IconButton>          
                   </div>
                   <div className="search2">
-                                         <input type="text" placeholder="Search..." />
-                                         <SearchOutlinedIcon />
-                                           </div>
+                        <input type="text" placeholder="Search..." onChangeCapture ={(e) => setserch(e.target.value)} />
+                        <IconButton onClick={searchClick}>
+                          <SearchOutlinedIcon />
+                        </IconButton>
+                                        
+                  </div>
 
 
 

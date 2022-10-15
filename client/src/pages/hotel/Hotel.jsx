@@ -30,7 +30,7 @@ const Hotel = () => {
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate)
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleClick = () =>{
     if(user){

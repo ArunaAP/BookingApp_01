@@ -20,17 +20,30 @@ function HotelFilter() {
 
   const [type, setType] = useState()
   const [city, setCity] = useState()
+  const [srch , setserch] = useState()
 
   //add User
   useEffect(() => {
           setList(data);
    },[data])
 
-   const handleClick = ()=>{
-    setList(list.filter((item) =>     (    ( item.city === city ) && ( item.type ===  type )    )    
-    
+const handleClick = ()=>{
+      setList(list.filter((item) =>  ( city.toLowerCase().includes(item.city.toLowerCase()) )  &&    
+                                                      ( type.toLowerCase().includes(item.type.toLowerCase()) ) 
+      
+      ));
+    }
+
+
+  const searchClick = ()=>{
+    setList(list.filter((item) =>  ( srch.toLowerCase().includes(item.name.toLowerCase()) )                    ||    
+                                                    ( srch.toLowerCase().includes(item.type.toLowerCase()) )      || 
+                                                    ( srch.toLowerCase().includes(item.title.toLowerCase()) )    || 
+                                                    ( srch.toLowerCase().includes(item.city.toLowerCase()) )      || 
+                                                    ( srch.includes(item.cheapestPrice) )  
     ));
   }
+
 
    const generatePDF = () => {
 
@@ -39,6 +52,8 @@ function HotelFilter() {
         report.save('report.pdf');
     });
   }
+
+  
 
   function refreshPage() {
     window.location.reload(false);
@@ -79,9 +94,12 @@ function HotelFilter() {
                       </div>
 
                       <div className="search2">
-                                         <input type="text" placeholder="Search..." />
+                                         <input type="text" placeholder="Search..." onChangeCapture ={(e) => setserch(e.target.value)} />
+                                         <IconButton onClick={searchClick}>
                                          <SearchOutlinedIcon />
-                        </div>
+                                         </IconButton>
+                                        
+                                           </div>
 
 
 

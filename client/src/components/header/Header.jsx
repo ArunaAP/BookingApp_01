@@ -58,18 +58,7 @@ const Header = ({type}) => {
             <FontAwesomeIcon icon={faBed} />
             <span>Stays</span>
             </div>
-            <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
-            </div>
-            <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
-            </div>
-            <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
-            </div>
+            
         </div>
         { type !== "list" &&
           <>

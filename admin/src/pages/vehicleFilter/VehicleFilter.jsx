@@ -20,6 +20,7 @@ function VehicleFilter() {
 
   const [vehicle_class, setClass] = useState()
   const [vehicle_seats, setSeet] = useState()
+  const [srch , setserch] = useState()
 
   //add User
   useEffect(() => {
@@ -27,8 +28,18 @@ function VehicleFilter() {
    },[data])
 
    const handleClick = ()=>{
-    setList(list.filter((item) =>     (    ( item.vehicle_class === vehicle_class ) && ( item.vehicle_seats ===  vehicle_seats )    )  
+    setList(list.filter((item) =>  ( vehicle_class.toLowerCase().includes(item.vehicle_class.toLowerCase()) )  &&    
+                                                    ( vehicle_seats.toLowerCase().includes(item.vehicle_seats.toLowerCase()) ) 
     
+    ));
+  }
+
+  const searchClick = ()=>{
+    setList(list.filter((item) =>  ( srch.toLowerCase().includes(item.vehicle_model.toLowerCase()) )                    ||    
+                                                    ( srch.toLowerCase().includes(item.vehicle_class.toLowerCase()) )      || 
+                                                    ( srch.toLowerCase().includes(item.vehicle_type.toLowerCase()) )    || 
+                                                    ( srch.toLowerCase().includes(item.vehicle_seats.toLowerCase()) )      || 
+                                                    ( srch.toLowerCase().includes(item.vehicle_register_number.toLowerCase()) )  
     ));
   }
 
@@ -78,9 +89,12 @@ function VehicleFilter() {
                       </div>
 
                       <div className="search2">
-                                         <input type="text" placeholder="Search..." />
+                                         <input type="text" placeholder="Search..." onChangeCapture ={(e) => setserch(e.target.value)} />
+                                         <IconButton onClick={searchClick}>
                                          <SearchOutlinedIcon />
-                                           </div>
+                                         </IconButton>
+                                        
+                                </div>
 
                       </div>
                       <div className="datatable">

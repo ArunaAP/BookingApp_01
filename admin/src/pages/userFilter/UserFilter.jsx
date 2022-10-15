@@ -38,9 +38,9 @@ function UserFilter() {
     
     const searchClick = ()=>{
       setList(list.filter((item) =>  ( srch.toLowerCase().includes(item.username.toLowerCase()) )                    ||    
-                                                      ( srch.toLowerCase().includes(item.email.toLowerCase()) )             || 
-                                                      ( srch.toLowerCase().includes(item.country.toLowerCase()) )             || 
-                                                      ( srch.toLowerCase().includes(item.phone.toLowerCase()) )             || 
+                                                      ( srch.toLowerCase().includes(item.email.toLowerCase()) )      || 
+                                                      ( srch.toLowerCase().includes(item.country.toLowerCase()) )    || 
+                                                      ( srch.toLowerCase().includes(item.phone.toLowerCase()) )      || 
                                                       ( srch.toLowerCase().includes(item.city.toLowerCase()) )  
       ));
     }
@@ -94,7 +94,7 @@ function UserFilter() {
                                          <SearchOutlinedIcon />
                                          </IconButton>
                                         
-                                           </div>
+                                </div>
 
                               </div>
 
